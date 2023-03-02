@@ -15,7 +15,7 @@
 RestfulOnlineShopping is an application which supports concurrent accesses where different users can shop for different products, add products to their watchlist, etc.
 (see "Postman Requests" directory for all the available requests).
 
-User Section:
+### User Section:
 - Registration:
   - prevents registration using the same username or email
 
@@ -38,7 +38,7 @@ User Section:
 - Watchlist:
   - add/remove products to/from their watchlist
 
-Admin Section:
+### Admin Section:
 - Dashboard: 
   - all orders along with their detail page (placement time, username, status (Processing, Canceled, Completed))
   - current products listed to sell, along with their detail page
@@ -48,23 +48,23 @@ Admin Section:
 - view the top 3 most spent users
 - view the top 3 most profitable products
 
-Security:
+### Security:
 - Authentication: guests cannot access any endpoint other than login or registration
 - Authorization: 
   - users cannot access endpoints designated to the admin
   - one user cannot access orders placed by other users, or other unrelated information
 
-Spring Email & RabbitMQ: 
+### Spring Email & RabbitMQ: 
 - a scheduled task will send to each user the details of their most recent order
 - the task published to an exchange of RabbitMQ, binding with a queue to which an email app (see "EmailApp") listens
 - the emailApp then sends the email to the corresponding user through Spring Email
 
-Concurrency:
+### Concurrency:
 - some methods are implemented with CompletableFuture to maximize the performance under multi-threading environment 
 
-AOP:
+### AOP:
 - log the time when a user places/updates an order
 - @ControllerAdvice as a central exception handler
 
-Unit Testing:
+### Unit Testing:
 - Uses JUnit and Mockito test and JaCoCo to achieve 60% code coverage for Controller, Service and DAO layers
