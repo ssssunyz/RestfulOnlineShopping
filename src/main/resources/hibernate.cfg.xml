@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/OnlineShopping</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">password321!</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="show_sql">true</property>
+
+        <!-- Hibernate will look at the Java entity classes and apply the necessary updates to the database -->
+        <!-- So as long as you have "OnlineShopping" schema in your db, the database tables will be automatically created by Hibernate -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="format_sql">true</property>
+        <property name="hibernate.c3p0.min_size">3</property>
+        <property name="hibernate.c3p0.max_size">15</property>
+
+        <!-- The timeout property specifies the number of seconds an unused connection will be kept before being discarded.-->
+        <property name="hibernate.c3p0.timeout">1800</property>
+        <!-- how many connections it should try to acquire if the pool runs out of available connections.-->
+        <property name="hibernate.c3p0.acquire_increment">5</property>
+
+        <mapping class="com.bfs.restfulonlineshopping.entity.User"/>
+        <mapping class="com.bfs.restfulonlineshopping.entity.Product"/>
+        <mapping class="com.bfs.restfulonlineshopping.entity.Order"/>
+        <mapping class="com.bfs.restfulonlineshopping.entity.Watchlist"/>
+        <mapping class="com.bfs.restfulonlineshopping.entity.Permission"/>
+        <mapping class="com.bfs.restfulonlineshopping.entity.OrderProduct"/>
+
+    </session-factory>
+</hibernate-configuration>
